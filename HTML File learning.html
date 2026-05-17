@@ -1,0 +1,559 @@
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Dev Crash Course</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">⚡ WebDev Crash Course</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchSection('html', this)">HTML</button>
+    <button class="nav-tab" onclick="switchSection('css', this)">CSS</button>
+    <button class="nav-tab" onclick="switchSection('js', this)">JavaScript</button>
+    <button class="nav-tab" onclick="switchSection('project', this)">Project</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:25%"></div></div>
+
+<div class="hero">
+  <div class="hero-badge">📚 MDN Curriculum · Beginner Level</div>
+  <h1>Learn Web Development From Scratch</h1>
+  <p>A complete beginner's crash course covering the three core languages of the web — built from the MDN curriculum.</p>
+  <div class="lang-pills">
+    <span class="lang-pill pill-html">HTML — Structure</span>
+    <span class="lang-pill pill-css">CSS — Style</span>
+    <span class="lang-pill pill-js">JavaScript — Logic</span>
+  </div>
+</div>
+
+<div class="lesson-container">
+
+  <!-- ======================== HTML ======================== -->
+  <div class="section active" id="section-html">
+    <div class="section-header">
+      <div class="section-icon icon-html">🧱</div>
+      <div class="section-header-text">
+        <h2>HTML — The Skeleton</h2>
+        <p>HyperText Markup Language · Lesson 1 of 4</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>What is HTML?</h3>
+      <p>HTML is the <strong>structure</strong> of every webpage you've ever visited. Think of it like the frame of a building — it defines what exists on the page and where it goes, but doesn't make it look pretty (that's CSS's job).</p>
+      <p>HTML uses <strong>elements</strong> — blocks of code wrapped in angle bracket tags like <span class="inline-code">&lt;p&gt;</span> for paragraph or <span class="inline-code">&lt;h1&gt;</span> for a heading.</p>
+    </div>
+
+    <div class="callout callout-info">
+      <p><strong>Key idea:</strong> Every HTML element has an <em>opening tag</em> <span class="inline-code">&lt;tag&gt;</span> and a <em>closing tag</em> <span class="inline-code">&lt;/tag&gt;</span>. The content goes in between.</p>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">The anatomy of an HTML page</h3>
+
+    <div class="code-label">
+      <span>HTML · index.html</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="cmt">&lt;!-- Every HTML file starts with this declaration --&gt;</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"en"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;head&gt;</span>
+    <span class="cmt">&lt;!-- Meta info — not visible to the user --&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="str">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span>My First Website<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+
+  <span class="tag">&lt;body&gt;</span>
+    <span class="cmt">&lt;!-- Everything visible goes inside &lt;body&gt; --&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Hello, World!<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span>This is my first paragraph.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></code></pre>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Core HTML elements cheatsheet</h3>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.5rem;">
+      <table>
+        <tr><th>Tag</th><th>What it does</th><th>Example</th></tr>
+        <tr><td>&lt;h1&gt; – &lt;h6&gt;</td><td>Headings (h1 = biggest)</td><td style="color:#b0b0c0">&lt;h1&gt;Main Title&lt;/h1&gt;</td></tr>
+        <tr><td>&lt;p&gt;</td><td>Paragraph of text</td><td style="color:#b0b0c0">&lt;p&gt;Some text here&lt;/p&gt;</td></tr>
+        <tr><td>&lt;a href=""&gt;</td><td>Hyperlink to another page</td><td style="color:#b0b0c0">&lt;a href="https://..."&gt;Click me&lt;/a&gt;</td></tr>
+        <tr><td>&lt;img src=""&gt;</td><td>Display an image</td><td style="color:#b0b0c0">&lt;img src="photo.jpg" alt="desc"&gt;</td></tr>
+        <tr><td>&lt;ul&gt; / &lt;li&gt;</td><td>Bullet list / list item</td><td style="color:#b0b0c0">&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</td></tr>
+        <tr><td>&lt;div&gt;</td><td>Generic container/box</td><td style="color:#b0b0c0">&lt;div&gt;...&lt;/div&gt;</td></tr>
+        <tr><td>&lt;button&gt;</td><td>Clickable button</td><td style="color:#b0b0c0">&lt;button&gt;Click me&lt;/button&gt;</td></tr>
+        <tr><td>&lt;input&gt;</td><td>Form input field</td><td style="color:#b0b0c0">&lt;input type="text"&gt;</td></tr>
+      </table>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Attributes — giving elements information</h3>
+
+    <div class="card">
+      <p>Attributes are extra data you add inside the opening tag. They always follow the pattern: <span class="inline-code">attribute="value"</span></p>
+    </div>
+
+    <div class="code-label">
+      <span>HTML · Attributes</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="cmt">&lt;!-- href tells the link WHERE to go --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"https://google.com"</span> <span class="attr">target</span>=<span class="str">"_blank"</span><span class="tag">&gt;</span>Open Google<span class="tag">&lt;/a&gt;</span>
+
+<span class="cmt">&lt;!-- src is the image file, alt is the description --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"cat.jpg"</span> <span class="attr">alt</span>=<span class="str">"A cute cat"</span> <span class="attr">width</span>=<span class="str">"300"</span><span class="tag">&gt;</span>
+
+<span class="cmt">&lt;!-- class is used to apply CSS styling later --&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="str">"intro-text"</span><span class="tag">&gt;</span>This paragraph has a class!<span class="tag">&lt;/p&gt;</span></code></pre>
+
+    <div class="demo-wrapper">
+      <div class="demo-header"><span><span class="live-dot"></span>LIVE PREVIEW</span><span>HTML Output</span></div>
+      <iframe class="demo-frame" height="160" srcdoc='<style>body{font-family:Georgia,serif;padding:20px;} h1{color:#333;margin-bottom:8px;} p{color:#555;} a{color:#7c3aed;} ul{color:#444;}</style><h1>My First HTML Page</h1><p>This is a paragraph. <strong>Bold text</strong> and <em>italic text</em> work too.</p><ul><li>First item</li><li>Second item</li><li>Third item</li></ul><a href="#">This is a link ↗</a>'></iframe>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">🧠 Quick Quiz</h3>
+
+    <div class="quiz-card" id="q1">
+      <div class="quiz-q">Q1: Which tag creates the biggest heading on a page?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this,'q1',false)">&lt;heading&gt;</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q1',true)">&lt;h1&gt;</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q1',false)">&lt;h6&gt;</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q1',false)">&lt;big&gt;</button>
+      </div>
+      <div class="quiz-feedback" id="q1-feedback"></div>
+    </div>
+
+    <div class="quiz-card" id="q2">
+      <div class="quiz-q">Q2: What does the "alt" attribute in an &lt;img&gt; tag do?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this,'q2',false)">Changes the image size</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q2',false)">Sets the image URL</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q2',true)">Provides a text description of the image</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q2',false)">Adds a border around the image</button>
+      </div>
+      <div class="quiz-feedback" id="q2-feedback"></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-secondary" disabled>← Previous</button>
+      <button class="btn btn-primary" onclick="switchSection('css', document.querySelector('.nav-tab:nth-child(2)'))">Next: CSS →</button>
+    </div>
+  </div>
+
+  <!-- ======================== CSS ======================== -->
+  <div class="section" id="section-css">
+    <div class="section-header">
+      <div class="section-icon icon-css">🎨</div>
+      <div class="section-header-text">
+        <h2>CSS — The Style</h2>
+        <p>Cascading Style Sheets · Lesson 2 of 4</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>What is CSS?</h3>
+      <p>CSS is how you make websites look good. It controls colours, fonts, spacing, layout, animations — everything visual. Without CSS, every website looks like a plain text document.</p>
+      <p>CSS works by <strong>selecting</strong> HTML elements and applying <strong>rules</strong> (property: value pairs) to them.</p>
+    </div>
+
+    <div class="callout callout-info">
+      <p><strong>The syntax:</strong> <span class="inline-code">selector { property: value; }</span> — Select what, then declare how it should look.</p>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">The 3 ways to add CSS</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Inline</strong> — directly on the element (avoid this, hard to manage)
+          <p><span class="inline-code">&lt;p style="color: red;"&gt;Text&lt;/p&gt;</span></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Internal</strong> — inside a <span class="inline-code">&lt;style&gt;</span> tag in your HTML file
+          <p>Good for single-page projects.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>External</strong> — a separate <span class="inline-code">style.css</span> file linked with <span class="inline-code">&lt;link&gt;</span>
+          <p>✅ Best practice. Keeps code organised.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-label">
+      <span>CSS · style.css — Selectors & Properties</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="cmt">/* ---- Selectors ---- */</span>
+
+<span class="cmt">/* 1. Element selector — targets ALL &lt;p&gt; tags */</span>
+<span class="sel">p</span> {
+  <span class="prop">color</span>: <span class="val">#333</span>;
+  <span class="prop">font-size</span>: <span class="val">16px</span>;
+}
+
+<span class="cmt">/* 2. Class selector — targets elements with class="btn" */</span>
+<span class="sel">.btn</span> {
+  <span class="prop">background</span>: <span class="val">purple</span>;
+  <span class="prop">color</span>: <span class="val">white</span>;
+  <span class="prop">padding</span>: <span class="val">10px 20px</span>;
+  <span class="prop">border-radius</span>: <span class="val">8px</span>;
+}
+
+<span class="cmt">/* 3. ID selector — targets the element with id="hero" */</span>
+<span class="sel">#hero</span> {
+  <span class="prop">font-size</span>: <span class="val">48px</span>;
+  <span class="prop">font-weight</span>: <span class="val">bold</span>;
+}</code></pre>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">The Box Model — critical concept</h3>
+
+    <div class="card">
+      <p>Every HTML element is a box. CSS controls 4 layers around that box:</p>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;text-align:center;">
+      <div style="background:rgba(245,158,11,0.15);border:2px solid var(--accent3);border-radius:8px;padding:1rem;max-width:400px;margin:0 auto;">
+        <div style="font-size:0.7rem;color:var(--accent3);font-weight:700;margin-bottom:8px;letter-spacing:1px;">MARGIN (outer space)</div>
+        <div style="background:rgba(6,182,212,0.12);border:2px solid var(--accent2);border-radius:6px;padding:1rem;">
+          <div style="font-size:0.7rem;color:var(--accent2);font-weight:700;margin-bottom:8px;letter-spacing:1px;">BORDER</div>
+          <div style="background:rgba(124,58,237,0.15);border:2px solid var(--accent);border-radius:4px;padding:1rem;">
+            <div style="font-size:0.7rem;color:#a78bfa;font-weight:700;margin-bottom:8px;letter-spacing:1px;">PADDING (inner space)</div>
+            <div style="background:var(--surface);border-radius:4px;padding:0.8rem;font-weight:700;font-size:0.85rem;">CONTENT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-label">
+      <span>CSS · Box Model in practice</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="sel">.card</span> {
+  <span class="cmt">/* Content size */</span>
+  <span class="prop">width</span>: <span class="val">300px</span>;
+  <span class="prop">height</span>: <span class="val">150px</span>;
+
+  <span class="cmt">/* Padding: space INSIDE the border */</span>
+  <span class="prop">padding</span>: <span class="val">20px</span>;
+
+  <span class="cmt">/* Border: the line around the element */</span>
+  <span class="prop">border</span>: <span class="val">2px solid #7c3aed</span>;
+  <span class="prop">border-radius</span>: <span class="val">12px</span>;
+
+  <span class="cmt">/* Margin: space OUTSIDE the element */</span>
+  <span class="prop">margin</span>: <span class="val">16px</span>;
+
+  <span class="cmt">/* Background colour */</span>
+  <span class="prop">background</span>: <span class="val">#f5f5ff</span>;
+}</code></pre>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Flexbox — modern layout</h3>
+
+    <div class="card">
+      <p>Flexbox is how you arrange elements in a row or column. It's the most useful CSS tool to learn first. Just apply <span class="inline-code">display: flex</span> to a parent container.</p>
+    </div>
+
+    <div class="code-label">
+      <span>CSS · Flexbox</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="sel">.container</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+
+  <span class="cmt">/* Direction: row (left→right) or column (top→bottom) */</span>
+  <span class="prop">flex-direction</span>: <span class="val">row</span>;
+
+  <span class="cmt">/* Space between items */</span>
+  <span class="prop">gap</span>: <span class="val">16px</span>;
+
+  <span class="cmt">/* Align along the MAIN axis (horizontal when row) */</span>
+  <span class="prop">justify-content</span>: <span class="val">center</span>;   <span class="cmt">/* or: flex-start, flex-end, space-between */</span>
+
+  <span class="cmt">/* Align along the CROSS axis (vertical when row) */</span>
+  <span class="prop">align-items</span>: <span class="val">center</span>;
+}
+
+<span class="sel">.container div</span> {
+  <span class="prop">flex</span>: <span class="val">1</span>; <span class="cmt">/* Each child shares the space equally */</span>
+}</code></pre>
+
+    <div class="demo-wrapper">
+      <div class="demo-header"><span><span class="live-dot"></span>LIVE PREVIEW</span><span>Flexbox Demo</span></div>
+      <iframe class="demo-frame" height="180" srcdoc='<style>body{font-family:sans-serif;padding:20px;background:#f8f8ff;}.container{display:flex;gap:12px;justify-content:center;align-items:stretch;}.box{flex:1;background:white;border:2px solid #7c3aed;border-radius:10px;padding:20px;text-align:center;font-weight:bold;color:#7c3aed;font-size:14px;}</style><div class="container"><div class="box">Box 1<br><span style="font-weight:400;font-size:12px;color:#888">flex: 1</span></div><div class="box">Box 2<br><span style="font-weight:400;font-size:12px;color:#888">flex: 1</span></div><div class="box">Box 3<br><span style="font-weight:400;font-size:12px;color:#888">flex: 1</span></div></div><p style="text-align:center;color:#888;font-size:12px;margin-top:12px;">3 boxes sharing equal space with display:flex</p>'></iframe>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">🧠 Quick Quiz</h3>
+
+    <div class="quiz-card" id="q3">
+      <div class="quiz-q">Q3: What CSS property adds space INSIDE an element's border?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this,'q3',false)">margin</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q3',true)">padding</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q3',false)">spacing</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q3',false)">gap</button>
+      </div>
+      <div class="quiz-feedback" id="q3-feedback"></div>
+    </div>
+
+    <div class="quiz-card" id="q4">
+      <div class="quiz-q">Q4: Which CSS property do you add to a parent to use Flexbox?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this,'q4',false)">position: flex</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q4',false)">layout: flexbox</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q4',true)">display: flex</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q4',false)">flex: true</button>
+      </div>
+      <div class="quiz-feedback" id="q4-feedback"></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="switchSection('html', document.querySelector('.nav-tab:nth-child(1)'))">← HTML</button>
+      <button class="btn btn-primary" onclick="switchSection('js', document.querySelector('.nav-tab:nth-child(3)'))">Next: JavaScript →</button>
+    </div>
+  </div>
+
+  <!-- ======================== JS ======================== -->
+  <div class="section" id="section-js">
+    <div class="section-header">
+      <div class="section-icon icon-js">⚡</div>
+      <div class="section-header-text">
+        <h2>JavaScript — The Logic</h2>
+        <p>Dynamic Scripting · Lesson 3 of 4</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>What is JavaScript?</h3>
+      <p>JavaScript (JS) makes websites <strong>interactive</strong>. Without JS, a webpage is just a static document. With JS, you can respond to button clicks, show/hide content, validate forms, fetch data from the internet, create games — anything.</p>
+      <p>HTML is the <em>structure</em>, CSS is the <em>style</em>, JavaScript is the <em>behaviour</em>.</p>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Variables — storing data</h3>
+
+    <div class="code-label">
+      <span>JavaScript · Variables</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="cmt">// let = can be changed later</span>
+<span class="kw">let</span> username = <span class="str">"Sarah"</span>;
+<span class="kw">let</span> age = <span class="num">16</span>;
+<span class="kw">let</span> isStudent = <span class="kw">true</span>;
+
+<span class="cmt">// const = cannot be changed (constant)</span>
+<span class="kw">const</span> PI = <span class="num">3.14159</span>;
+<span class="kw">const</span> siteName = <span class="str">"My Website"</span>;
+
+<span class="cmt">// Printing to the console (press F12 to see it)</span>
+console.<span class="fn">log</span>(username); <span class="cmt">// → "Sarah"</span>
+console.<span class="fn">log</span>(age + <span class="num">4</span>);   <span class="cmt">// → 20</span></code></pre>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">If/Else — making decisions</h3>
+
+    <div class="code-label">
+      <span>JavaScript · Conditionals</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="kw">let</span> score = <span class="num">72</span>;
+
+<span class="kw">if</span> (score >= <span class="num">90</span>) {
+  console.<span class="fn">log</span>(<span class="str">"A grade — excellent!"</span>);
+} <span class="kw">else if</span> (score >= <span class="num">70</span>) {
+  console.<span class="fn">log</span>(<span class="str">"B grade — good work"</span>);
+} <span class="kw">else</span> {
+  console.<span class="fn">log</span>(<span class="str">"Keep studying!"</span>);
+}
+<span class="cmt">// → "B grade — good work"</span></code></pre>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Functions — reusable blocks of code</h3>
+
+    <div class="code-label">
+      <span>JavaScript · Functions</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="cmt">// Define a function</span>
+<span class="kw">function</span> <span class="fn">greetUser</span>(name) {
+  <span class="kw">return</span> <span class="str">"Welcome, "</span> + name + <span class="str">"!"</span>;
+}
+
+<span class="cmt">// Call the function</span>
+<span class="kw">let</span> message = <span class="fn">greetUser</span>(<span class="str">"Sarah"</span>);
+console.<span class="fn">log</span>(message); <span class="cmt">// → "Welcome, Sarah!"</span>
+
+<span class="cmt">// Modern arrow function (same thing, shorter syntax)</span>
+<span class="kw">const</span> <span class="fn">double</span> = (n) => n * <span class="num">2</span>;
+console.<span class="fn">log</span>(<span class="fn">double</span>(<span class="num">5</span>)); <span class="cmt">// → 10</span></code></pre>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">The DOM — making JS talk to HTML</h3>
+
+    <div class="card">
+      <p>The <strong>DOM (Document Object Model)</strong> is how JavaScript reads and changes your HTML. You can grab any element by its ID or class, then change its text, style, or content.</p>
+    </div>
+
+    <div class="code-label">
+      <span>JavaScript · DOM Manipulation</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="cmt">// HTML: &lt;h1 id="title"&gt;Hello&lt;/h1&gt;</span>
+<span class="cmt">//       &lt;button id="myBtn"&gt;Click me&lt;/button&gt;</span>
+
+<span class="cmt">// Grab the element by its ID</span>
+<span class="kw">const</span> title = document.<span class="fn">getElementById</span>(<span class="str">"title"</span>);
+<span class="kw">const</span> btn = document.<span class="fn">getElementById</span>(<span class="str">"myBtn"</span>);
+
+<span class="cmt">// Change its text content</span>
+title.textContent = <span class="str">"Text changed by JavaScript!"</span>;
+
+<span class="cmt">// Change its style</span>
+title.style.color = <span class="str">"purple"</span>;
+
+<span class="cmt">// Listen for a click on the button</span>
+btn.<span class="fn">addEventListener</span>(<span class="str">"click"</span>, <span class="kw">function</span>() {
+  title.textContent = <span class="str">"You clicked the button!"</span>;
+  title.style.fontSize = <span class="str">"2rem"</span>;
+});</code></pre>
+
+    <div class="demo-wrapper">
+      <div class="demo-header"><span><span class="live-dot"></span>INTERACTIVE DEMO</span><span>Click the button!</span></div>
+      <iframe class="demo-frame" height="140" srcdoc='<style>body{font-family:sans-serif;padding:20px;display:flex;flex-direction:column;align-items:center;gap:12px;} h2{font-size:1.3rem;color:#333;transition:all 0.3s;} button{padding:10px 24px;background:#7c3aed;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:bold;} button:hover{background:#6d28d9;} p{color:#888;font-size:0.85rem;}</style><h2 id="demo-title">I am an HTML element</h2><button onclick="changeIt()">Change me with JS</button><p>JavaScript can change anything on this page</p><script>let count=0;function changeIt(){count++;const msgs=["JavaScript just changed me!","DOM manipulation is powerful!","You clicked "+count+" times!","Keep going!"];document.getElementById("demo-title").textContent=msgs[count%msgs.length];document.getElementById("demo-title").style.color=["#7c3aed","#06b6d4","#f59e0b","#22c55e"][count%4];}</script>'></iframe>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">🧠 Quick Quiz</h3>
+
+    <div class="quiz-card" id="q5">
+      <div class="quiz-q">Q5: Which keyword declares a variable that CANNOT be reassigned?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this,'q5',false)">let</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q5',false)">var</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q5',true)">const</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q5',false)">fixed</button>
+      </div>
+      <div class="quiz-feedback" id="q5-feedback"></div>
+    </div>
+
+    <div class="quiz-card" id="q6">
+      <div class="quiz-q">Q6: What method do you use to listen for a click event on a button?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this,'q6',false)">onClick()</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q6',true)">addEventListener("click", ...)</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q6',false)">listenForClick()</button>
+        <button class="quiz-opt" onclick="checkAnswer(this,'q6',false)">attachEvent()</button>
+      </div>
+      <div class="quiz-feedback" id="q6-feedback"></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="switchSection('css', document.querySelector('.nav-tab:nth-child(2)'))">← CSS</button>
+      <button class="btn btn-primary" onclick="switchSection('project', document.querySelector('.nav-tab:nth-child(4)'))">Next: Project →</button>
+    </div>
+  </div>
+
+  <!-- ======================== PROJECT ======================== -->
+  <div class="section" id="section-project">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);">🚀</div>
+      <div class="section-header-text">
+        <h2>Build Your First Project</h2>
+        <p>Putting it all together · Lesson 4 of 4</p>
+      </div>
+    </div>
+
+    <div class="challenge-card">
+      <div class="challenge-badge">🎯 PROJECT CHALLENGE</div>
+      <h3>Build a Personal Intro Card</h3>
+      <p>Combine everything you've learned — HTML structure, CSS styling, and JavaScript interactivity — into one complete mini-project.</p>
+      <ul>
+        <li>A name heading + short bio paragraph</li>
+        <li>A styled card with colours, padding, border-radius</li>
+        <li>A button that shows/hides extra info using JavaScript</li>
+      </ul>
+    </div>
+
+    <div class="code-label">
+      <span>HTML + CSS + JS · Complete project file</span>
+      <button class="copy-btn" onclick="copyCode(this)">COPY</button>
+    </div>
+    <pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"en"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="str">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>My Intro Card<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"card"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"avatar"</span><span class="tag">&gt;</span>👩‍💻<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Sarah Connelly<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Aspiring web developer from Dublin 🇮🇪<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"extra-info"</span> <span class="attr">id</span>=<span class="str">"moreInfo"</span><span class="tag">&gt;</span>
+      📚 Learning HTML, CSS &amp; JavaScript
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attr">id</span>=<span class="str">"toggleBtn"</span><span class="tag">&gt;</span>Show More About Me<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"script.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+
+    <div class="demo-wrapper">
+      <div class="demo-header"><span><span class="live-dot"></span>LIVE RESULT</span><span>Final Project Preview</span></div>
+      <iframe class="demo-frame" height="320" srcdoc='<style>body{display:flex;justify-content:center;align-items:center;min-height:100%;margin:0;background:#f0f0f8;font-family:sans-serif;padding:20px;}.card{background:white;border-radius:16px;padding:32px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.1);}.avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#06b6d4);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2rem;}h1{font-size:1.3rem;color:#111;margin-bottom:8px;}p{color:#666;font-size:.88rem;margin-bottom:16px;}.extra-info{display:none;background:#f5f0ff;border-radius:8px;padding:12px;margin-bottom:16px;font-size:.82rem;color:#5b21b6;text-align:left;line-height:1.8;}button{background:#7c3aed;color:white;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-size:.88rem;font-weight:bold;transition:background .2s;}button:hover{background:#6d28d9;}</style><div class="card"><div class="avatar">👩‍💻</div><h1>Sarah Connelly</h1><p>Aspiring web developer from Dublin 🇮🇪</p><div class="extra-info" id="moreInfo">📚 Learning HTML, CSS & JavaScript<br>🎨 Interested in UI/UX Design<br>🎯 Goal: Build my first real website!</div><button id="toggleBtn">Show More About Me</button></div><script>const btn=document.getElementById("toggleBtn"),info=document.getElementById("moreInfo");let v=false;btn.addEventListener("click",()=>{v=!v;info.style.display=v?"block":"none";btn.textContent=v?"Show Less":"Show More About Me";});</script>'></iframe>
+    </div>
+
+    <div class="challenge-card">
+      <div class="challenge-badge">EXTEND IT</div>
+      <h3>Make it your own</h3>
+      <p>Once you can build the intro card, try these extensions:</p>
+      <ul>
+        <li>Add a dark/light mode toggle button</li>
+        <li>Add a skills list with progress bars using CSS width</li>
+        <li>Make a contact form with HTML inputs</li>
+        <li>Add a CSS hover animation on the button (<span class="inline-code">transform: scale(1.05)</span>)</li>
+        <li>Change the avatar emoji using JavaScript on click</li>
+      </ul>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">📚 What to learn next</h3>
+
+    <div class="concept-grid">
+      <div class="concept-item"><div class="label">Step 1</div><div class="value">CSS Grid Layout</div></div>
+      <div class="concept-item"><div class="label">Step 2</div><div class="value">Responsive Design</div></div>
+      <div class="concept-item"><div class="label">Step 3</div><div class="value">JS Arrays & Loops</div></div>
+      <div class="concept-item"><div class="label">Step 4</div><div class="value">Fetch API & JSON</div></div>
+      <div class="concept-item"><div class="label">Step 5</div><div class="value">Git & GitHub</div></div>
+      <div class="concept-item"><div class="label">Step 6</div><div class="value">React Framework</div></div>
+    </div>
+
+    <div class="callout callout-info">
+      <p><strong>Best free resources:</strong> <strong>MDN Web Docs</strong> (developer.mozilla.org) — the gold standard reference. <strong>freeCodeCamp</strong> — structured free courses. <strong>The Odin Project</strong> — full curriculum, project-based.</p>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="switchSection('js', document.querySelector('.nav-tab:nth-child(3)'))">← JavaScript</button>
+      <button class="btn btn-primary" onclick="switchSection('html', document.querySelector('.nav-tab:nth-child(1)'))">↺ Start Over</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- External JavaScript — loaded at end of body so HTML is ready first -->
+<script src="script.js"></script>
+
+</body>
+</html>
